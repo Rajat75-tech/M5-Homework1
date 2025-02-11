@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics Covered</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 32px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script>
+        
+        const heading = React.createElement ("h1", null, "Topics covered");
+
+        const description = React.createElement (
+            "p",
+            null,
+            "The following is a list of all the topics we cover in the MDN learning area."
+        );
+
+        const topics = [
+            {
+                title: "Getting started with the web",
+                url: "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web",
+                description: 
+                    "Provides a practical introduction to web development for complete beginners.",
+            },
+            {
+                title: "HTML — Structuring the web",
+                url: "https://developer.mozilla.org/en-US/docs/Learn/HTML",
+                description: 
+                    "HTML is the language that we use to structure the different parts of our content and define what their meaning or purpose is. This topic teaches HTML in detail.",
+            },
+        ];
+
+        const topicElements = topics.map((topic) => 
+            React.createElement (
+                "div",
+                null,
+                React.createElement (
+                    "a",
+                    { href: topic.url, target: "_blank" },
+                    topic.title
+                ),
+                React.createElement ("p", null, topic.description)
+            )
+        );
+
+        const container = React.createElement (
+            "div",
+            null,
+            heading,
+            description,
+            ...topicElements
+        );
+
+        ReactDOM.render (container, document.getElementById("root"));
+    </script>
+</body>
+</html>
